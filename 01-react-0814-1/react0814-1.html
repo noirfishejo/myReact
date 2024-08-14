@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- step1. 載入 React, Babel -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        img {
+            width: 300px;
+        }
+
+        p {
+            font-size: .7rem;
+
+        }
+    </style>
+</head>
+
+<body>
+    <!-- step2. 載入根元素 (root) -->
+    <div id="root"></div>
+    <script type="text/babel">
+        // step3. 建立 React 元件
+        function App() {
+            // JSX寫法
+            // return <>
+            //     <div>
+            //         <div>
+            //             <h2>Space</h2>
+            //             <img src="../space/nasa-jlV2k_Fx0fc-unsplash.jpg" alt="" />
+            //         </div>
+            //         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat minus quidem quis reprehenderit harum hic quia maiores iusto ex? Est illum laboriosam voluptates eligendi ducimus vero doloribus neque, repellendus corporis?</p>
+            //     </div>
+            // </>
+            return (
+                <div>
+                    <div>
+                        <h2>Space</h2>
+                        <img src="../space/nasa-jlV2k_Fx0fc-unsplash.jpg" alt="" />
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat minus quidem quis reprehenderit harum hic quia maiores iusto ex? Est illum laboriosam voluptates eligendi ducimus vero doloribus neque, repellendus corporis?</p>
+                </div>
+            )
+        }
+        // step4. 渲染(顯示)App元件到根原件(root)上
+        const el = document.getElementById('root');
+        const root = ReactDOM.createRoot(el);
+        root.render(<App />);
+    </script>
+
+</body>
+
+</html>
