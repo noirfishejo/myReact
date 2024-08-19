@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>LINE TODAY</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <script src="../javascripts/vendor.js"></script>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.2.0/redux.min.js"
+        integrity="sha512-1/8Tj23BRrWnKZXeBruk6wTnsMJbi/lJsk9bsRgVwb6j5q39n0A00gFjbCTaDo5l5XrPVv4DZXftrJExhRF/Ug=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Noto+Serif+TC:wght@200..900&display=swap');
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(247, 247, 247);
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: rgb(255, 255, 255);
+            padding: 20px 32px;
+            width: auto;
+            max-width: 786px;
+            height: auto;
+            min-height: 200px;
+            margin: 0 auto;
+            letter-spacing: .05em;
+            line-height: 2.2em;
+        }
+
+        h1 {
+            font-size: 1.6rem;
+            font-weight: 500;
+            letter-spacing: .1em;
+            padding: 20px 0;
+        }
+
+        p {
+            font-size: 1.3rem;
+            font-weight: 300;
+            padding: 20px 0;
+        }
+
+        small {
+            font-size: .9rem;
+            font-weight: 300;
+        }
+
+        .img-box {
+            width: 100%;
+        }
+
+        img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            border-radius: 3px;
+        }
+
+
+        @media (max-width: 768px) {
+            main {
+            padding: 20px 0px;
+        }
+        small{
+            padding: 2px 20px;
+        }
+        p{
+            padding: 20px 20px;
+        }
+        h1{
+            padding: 20px 20px;
+        }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        function App() {
+            const data = {
+                title: '猴子走進都市！內湖驚見2隻趴機車　居民：曬衣見牠坐面前「跟我對看」',
+                imgUrl1: 'https://today-obs.line-scdn.net/0hDHQ1MBP3G2dsSAvBGfJkMFQeFxZfLgFuTiZRAU5IEFRFZFs3UylIBEBOQ0sRcQ84TC4BUklJQQJDcFgxUQ/w644',
+                caption1: '民眾發現內湖有2隻猴子出沒。翻攝「內湖 & 松山 & 南港 & 汐止 集團」臉書',
+                caption2: '有網友表示曬衣服也看過猴子。翻攝「內湖 & 松山 & 南港 & 汐止 集團」臉書',
+                content1: '【黃詩淳／綜合報導】台北市內湖驚見猴子出沒！有民眾發現2隻猴子趴在機車上，並把照片PO在網路上，沒想到釣出不少網友留言表示，也有在東湖等地區看到猴子，雖然不清楚是不是一樣的，仍引發熱議。',
+                content2: '有網友在臉書社團「內湖 & 松山 & 南港 & 汐止 集團」發文，透露在內湖星雲街、靠近方濟中學，有2隻猴子出沒，並附上相關照片，只見2隻猴子似乎不怕人，直接坐在機車儀表板上，最後離開時還走在馬路上，旁邊還有住戶。',
+                content3: '對此，有網友表示前陣子也看到過猴子，並附上照片，「上個禮拜東湖康樂街也出現過兩隻猴子，不知道是不是同樣的兩隻猴子」、「前幾天在頂樓曬衣服，牠從我旁邊走過來坐在我面前跟我對看」、「昨天也在康寧路一段出沒，有看到台北市動保處的車子，要小心」。',
+                content4: '也有網友表示，「好危險」、「這不妙，繁殖多了會搶東西！破壞物品」、「不要餵食」，但有人認為「生態環境惡化」、「很可憐人人喊打不喜歡，但大家有想到嗎？是人類把牠們的生活空間及資源給破壞，導致牠們為了生存空間一直往山下移動」。',
+                imgUrl2: 'https://today-obs.line-scdn.net/0hc1cZ9sf3PB5eIyy4K5lDSWZ1MG9tRSYXfE12LCgjZi4jDy4bNkJvfS4qYzIgFX1NfkInfHgkYSgkEHlLMg/w1200',
+            }
+            return <>
+                <main>
+                    <h1>{data.title}</h1>
+                    <div className='img-box'>
+                        <img src={data.imgUrl1} className="card-img-top" alt="..." /><br />
+                    </div>
+                    <small style={{ fontSize: '', color: 'grey' }}>{data.caption1}</small>
+                    <p>{data.content1}</p>
+                    <p>{data.content2}</p>
+                    <p>{data.content3}</p>
+                    <p>{data.content4}</p>
+                    <div className='img-box'>
+                        <img src={data.imgUrl2} className="card-img-top" alt="..." /><br />
+                    </div>
+                    <small style={{ fontSize: '0.8rem', color: 'grey' }}>{data.caption2}</small>
+                </main>
+            </>
+        }
+        ReactDOM
+            .createRoot(document.getElementById('root'))
+            .render(<App />);
+    </script>
+</body>
+
+</html>

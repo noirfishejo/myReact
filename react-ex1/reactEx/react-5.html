@@ -29,29 +29,58 @@
 
                 <script type="text/babel">
                     // 程式撰寫區
+                    function App() {
+                        // 資料抽離
+                        const data = {
+                            imgUrl: 'https://media.istockphoto.com/id/1401100981/photo/young-woman-freelancer-traveler-working-online-using-laptop-and-enjoying-the-beautiful-nature.jpg?b=1&s=170667a&w=0&k=20&c=APFnR6nLEdH4MxojjFdNi6-g0jXE6zlvb0EXJmkkgwU=',
+                            title: 'aaa',
+                            desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi culpaaspernatur tempore cupiditate illo minima voluptatem blanditiis optioaccusantium earum voluptate magni repellendus, ipsa dolor adipisci liberoqui commodi veritatis.",
+                            btnLink: 'https://unsplash.com/s/photos/free',
+                            btnName: 'Go somewhere'
+                        }
+                        return (
+                            <div className="card" style={{width:'18rem', marginBottom:'10px'}}>
+                                <div className="card-img-top" style={{
+                                    height: '200px',
+                                    backgroundImage: "url('https://media.istockphoto.com/id/1401100981/photo/young-woman-freelancer-traveler-working-online-using-laptop-and-enjoying-the-beautiful-nature.jpg?b=1&s=170667a&w=0&k=20&c=APFnR6nLEdH4MxojjFdNi6-g0jXE6zlvb0EXJmkkgwU=')",
+                                    backgroundSize: 'cover',
+                                    backgroundPosition: 'center center',
+                                }}>
+                                </div>
+                                <div className="card-body">
+                                    <h5 className="card-title">{data.title}</h5>
+                                    <p className="card-text">{data.desc}</p>
+                                    <a href={data.btnLink} target="_blank" className="btn btn-primary">{data.btnName}</a>
+                                </div>
+                            </div>
+                        )
+                    }
+                    ReactDOM
+                    .createRoot(document.getElementById('root'))
+                    .render(<App />);
                 </script>
 
                 <!-- HTML -->
                 <div class="card" style="width: 18rem">
-                    <div 
-                        class="card-img-top" 
-                        style="height: 200px;
+                    <div class="card-img-top" style="height: 200px;
                         background-image: url('https://media.istockphoto.com/id/1401100981/photo/young-woman-freelancer-traveler-working-online-using-laptop-and-enjoying-the-beautiful-nature.jpg?b=1&s=170667a&w=0&k=20&c=APFnR6nLEdH4MxojjFdNi6-g0jXE6zlvb0EXJmkkgwU=');
                         background-size: cover;
                         background-position: center center;
                         ">
                     </div>
-                    <div class="card-body"> 
-                        <h5 class="card-title">卡片標題</h5>
+                    <div class="card-body">
+                        <h5 class="card-title">555</h5>
                         <p class="card-text">
                             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi culpa
                             aspernatur tempore cupiditate illo minima voluptatem blanditiis optio
                             accusantium earum voluptate magni repellendus, ipsa dolor adipisci libero
                             qui commodi veritatis.
                         </p>
-                        <a href="https://unsplash.com/s/photos/free" target="_blank" class="btn btn-primary">Go somewhere</a>
+                        <a href="https://unsplash.com/s/photos/free" target="_blank" class="btn btn-primary">Go
+                            somewhere</a>
                     </div>
                 </div>
+
 
                 <!-- 練習結束 -->
             </main>
