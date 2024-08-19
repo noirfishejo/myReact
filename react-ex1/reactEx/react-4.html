@@ -26,7 +26,10 @@
                 <div id="root"></div>
                 <script type="text/babel">
                     function App() {
-                        const htmlTemplate = '<div>這裡有一段文字</div>';
+                        // 建立一個變數帶HTML標籤和內容
+                        const htmlTemplate = {
+                            __html: '<div>這裡有一段文字yo</div>'
+                        }
 
                         return (
                             <div>
@@ -54,16 +57,31 @@
                                     <textarea name="" id="" cols="30" rows="5" defaultValue="這裡可以放多行文字"></textarea>
                                 </div>
                                 {/* dangerouslySetInnerHTML */}
+                                <div dangerouslySetInnerHTML={htmlTemplate}>
+                                    {/* <div>這裡有一段文字</div> */}
+                                </div>
+
                                 {/* onChange */}
                                 <div>
-                                    {/* <div>這裡有一段文字yo</div> */}
+                                    <input type="text" onChange={
+                                        function () {
+                                            console.log(123);
+                                        }
+                                    } />
                                 </div>
-                                <div><input type="text" onChange={
-                                    function(){
-                                        console.log(123)
-                                    }
-                                } /></div>
+
+                                {/* onChange */}
+                                <div>
+                                    <input type="text" onChange={
+                                        function () {
+                                            // console.log(e);
+                                            console.log(event.target.value);
+                                        }
+                                    } />
+                                </div>
+
                             </div>
+
                         );
                     }
 
@@ -93,7 +111,7 @@
                         <textarea name="" id="" cols="30" rows="5">這裡可以放多行文字</textarea>
                     </div>
                     <div>
-                        <div>這裡有一段文字</div>
+                        <div>這裡有一段文字u</div>
                     </div>
                     <div><input type="text" /></div>
                 </div>
