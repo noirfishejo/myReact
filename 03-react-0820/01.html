@@ -13,16 +13,18 @@
 <body>
     <!-- step2. 載入根元素 -->
     <div id="root"></div>
+
     <script type="text/babel">
         // 建立圖片元件
         // 元件名稱字首大寫
-        function GetImg(props){
+        function GetImg(props) {
             // 元件結束後必須要有回傳值
             return (
-                <img src={props.imgUrl} src={prop.imgUrl} alt="" style={{
-                    width:'300px',
-                    border:'1px soild black',
-                }}/>
+                <img src={props.imgUrl} src={props.imgUrl} alt="" style={{
+                    width: '300px',
+                    marginBottom: '20px',
+                    border: '1px soild black',
+                }} />
             )
         }
 
@@ -30,18 +32,30 @@
         function App() {
             // JSX
             return (
-                <div>
-                    <h2>呼叫圖片元件</h2>
-                    {/* 呼叫元件：擇其一 */}
-                    {/* <GetImg></GetImg> */}
-                    {/* 使用自訂屬性名稱，傳值給元件 */}
-                    {/* 元件使用props接收 */}
-                    <GetImg imgUrl="../images/nasa-jlV2k_Fx0fc-unsplash.jpg" title="image1">
-                    <GetImg imgUrl="../images/nasa-jlV2k_Fx0fc-unsplash.jpg" title="image1">
-                </div>
+                <>
+                    <div>
+                        <h2>呼叫圖片元件</h2>
+                        {/* 呼叫元件：擇其一 */}
+                        {/* <GetImg></GetImg> */}
+                        {/* 使用自訂屬性名稱，傳值給元件 */}
+                        {/* 元件使用props接收 */}
+                        <GetImg imgUrl="./images/nasa-jlV2k_Fx0fc-unsplash.jpg" title="image1" />
+                        <GetImg imgUrl="./images/nasa-jlV2k_Fx0fc-unsplash.jpg" title="image1" />
 
+                        {/* 沒有元件化的圖片：有N張圖就要重工N次 */}
+                        {/* 
+                        <img src="./images/nasa-jlV2k_Fx0fc-unsplash.jpg" alt="" style={{
+                        width:'300px',
+                        marginBottom:'20px',
+                        border:'1px soild black',
+                        }}/>
+                         */}
+                    </div>
+                </>
             )
         }
+
+        // step4. 渲染元素到根元件上
         ReactDOM
             .createRoot(document.getElementById('root'))
             .render(<App />);

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="./javascripts/vendor.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(247, 247, 247);
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+
+    </style>
+</head>
+
+<body>
+    <!-- step2. 載入根元素 -->
+    <div id="root"></div>
+    <script type="text/babel">
+        // 建立卡片元件
+        // 元件名稱字首大寫
+        function Card(props) {
+            let msgCaption = '';
+            if (props.caption == ''){
+                msgCaption = '-';
+            } else {
+                msgCaption = props.caption + "pui";
+            }
+            
+            let msgName = '';
+            if (props.name == ''){
+                msgName = '未命名';
+            } else {
+                msgName = props.name + "555";
+            }
+            
+            let msgBtnName = '';
+            if (props.btnName == ''){
+                msgBtnName = 'Gogoro';
+            } else {
+                msgBtnName = props.btnName +" yo!";
+            }
+            
+            // 元件結束後必須要有回傳值
+            return (
+                <div className="card" style={{ width: "320px", margin: "20px" }}>
+                    <img className="card-img-top" src={props.imgUrl} alt="Card image cap" />
+                    <div className="card-body">
+                        <h5 className="card-title">{msgName}</h5>
+                        <p className="card-text">敘述{msgCaption}</p>
+                        <a href="#" className="btn btn-primary">{msgBtnName}</a>
+                    </div>
+                </div>
+            )
+        }
+
+        // step3. 建立React元件
+        function App() {
+            // JSX
+            return (
+                <>
+                    <Card imgUrl="./images/nasa-jlV2k_Fx0fc-unsplash.jpg" name="" caption="moooooooooooooooooooooooooooooooooooooon" btnName="查看更多" />
+                    <Card imgUrl="./images/nasa-lEBDlbXLEgs-unsplash.jpg" name="Card2" caption="mooooooooooooooooooooooooooooooooooooooooooooooon" btnName="more" />
+                </>
+            )
+        }
+
+        // step4. 渲染元素到根元件上
+        ReactDOM
+            .createRoot(document.getElementById('root'))
+            .render(<App />);
+    </script>
+    <link rel="stylesheet" href="./css/all.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+</body>
+
+</html>
