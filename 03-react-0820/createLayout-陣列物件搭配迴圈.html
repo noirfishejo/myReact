@@ -49,8 +49,6 @@
             return (
               <div class="card mb-4">
                 <div class="card-header">
-                  {/* 未解構 */}
-                  <h4 class="my-0">{props.title}</h4>
                   {/* 已解構 */}
                   <h4 class="my-0">{title}</h4>
                 </div>
@@ -63,9 +61,8 @@
                       // 檢查price是否為數值型別 => typeof
                       // 是 => 顯示價格/月(含small標籤)
                       // 不是 => 顯示字串內容
-                      typeof props.price === 'number' ? <>${props.price}<small>/月</small></> : props.price
                     }
-                    <br/>
+                    <br />
                     {
                       // 已解構
                       typeof price === 'number' ? <>${price}<small>/月</small></> : price
@@ -80,6 +77,38 @@
             )
           }
           const App = () => {
+            // 建立陣列物件資料
+            const products = [
+              {
+                id: 1, // 跑迴圈時需要的key值，不可重複
+                title: '基本版',
+                price: 1000,
+                desc: '基本版說明區',
+                btnName: '免費試用'
+              },
+              {
+                id: 2,
+                title: '進階版',
+                price: 6000,
+                desc: '進階版說明區',
+                btnName: '進階版申請'
+              },
+              {
+                id: 3,
+                title: '企業版',
+                price: '請洽客服',
+                desc: '多人適用。。。',
+                btnName: '企業版申請'
+              },
+              {
+                id: 4,
+                title: '專業版',
+                price: 10000,
+                desc: '專業版說明區',
+                btnName: '專業版申請'
+              },
+            ]
+
             return (
               <>
                 <h2>租用方案</h2>
@@ -90,10 +119,26 @@
                   itaque odio voluptatibus.
                 </p>
 
-                {/* 呼叫卡片元件 */}
-                <Card title="基本版" price={1000} desc="基本版說明區" btnName="免費試用" />
-                <Card title="進階版" price={6000} desc="進階版說明區" btnName="進階版申請" />
-                <Card title="企業版" price="請洽客服" desc="多人適用。。。" btnName="企業版申請" />
+                {/* 使用迴圈將陣列物件資料填入 */}
+                {/* 輸出(return)時使用JS的話要加上{} */}
+
+                {
+                  products.map((item) => {
+                    /* return <Card title="基本版" price={1000} desc="基本版說明區" btnName="免費試用" /> */
+                    /* 改為陣列傳值給元件 */
+                    return <Card title={item.title} price={item.price} desc={item.desc} btnName={item.btnName} />
+                  })
+                }
+
+                <h2>咩咩用方案</h2>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore molestiae
+                  facere asperiores sit aspernatur laboriosam ipsum, excepturi fuga,
+                  consequuntur cupiditate, nam a doloremque error adipisci nulla reiciendis
+                  itaque odio voluptatibus.
+                </p>
+                {/* 單獨呼叫元件 */}
+                <Card title="專人解說" price="請洽客服" desc="專人解說文字區" btnName="專人服務" />
               </>
             );
           };
