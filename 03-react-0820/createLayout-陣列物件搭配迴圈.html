@@ -47,16 +47,16 @@
             //   myprice = props.price;
             // }
             return (
-              <div class="card mb-4">
-                <div class="card-header">
+              <div className="card mb-4">
+                <div className="card-header">
                   {/* 已解構 */}
-                  <h4 class="my-0">{title}</h4>
+                  <h4 className="my-0">{title}</h4>
                 </div>
-                <div class="card-body">
+                <div className="card-body">
                   {/* <h1 class="card-title">{myprice}<small>/月</small></h1> */}
                   {/* 三元運算子 */}
                   {/* 條件式 ? 條件式成立 : 條件式不成立 */}
-                  <h1 class="card-title">
+                  <h1 className="card-title">
                     {
                       // 檢查price是否為數值型別 => typeof
                       // 是 => 顯示價格/月(含small標籤)
@@ -71,7 +71,7 @@
                   </h1>
 
                   <p>{props.desc}</p>
-                  <button type="button" class="btn btn-outline-primary">{props.btnName}</button>
+                  <button type="button" className="btn btn-outline-primary">{props.btnName}</button>
                 </div>
               </div>
             )
@@ -126,7 +126,7 @@
                   products.map((item) => {
                     /* return <Card title="基本版" price={1000} desc="基本版說明區" btnName="免費試用" /> */
                     /* 改為陣列傳值給元件 */
-                    return <Card title={item.title} price={item.price} desc={item.desc} btnName={item.btnName} />
+                    return <Card key={item.id} title={item.title} price={item.price} desc={item.desc} btnName={item.btnName} />
                   })
                 }
 
