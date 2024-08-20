@@ -11,14 +11,15 @@
 </head>
 
 <body>
+    <!-- step2. 載入根元素 -->
     <div id="root"></div>
     <script type="text/babel">
         // 建立圖片元件
         // 元件名稱字首大寫
-        function GetImg(){
+        function GetImg(props){
             // 元件結束後必須要有回傳值
             return (
-                <img src="..." alt="" style={{
+                <img src={props.imgUrl} src={prop.imgUrl} alt="" style={{
                     width:'300px',
                     border:'1px soild black',
                 }}/>
@@ -27,6 +28,7 @@
 
         // step3. 建立React元件
         function App() {
+            // JSX
             return (
                 <div>
                     <h2>呼叫圖片元件</h2>
@@ -34,7 +36,8 @@
                     {/* <GetImg></GetImg> */}
                     {/* 使用自訂屬性名稱，傳值給元件 */}
                     {/* 元件使用props接收 */}
-                    <GetImg imgUrl='...'>
+                    <GetImg imgUrl="../images/nasa-jlV2k_Fx0fc-unsplash.jpg" title="image1">
+                    <GetImg imgUrl="../images/nasa-jlV2k_Fx0fc-unsplash.jpg" title="image1">
                 </div>
 
             )
