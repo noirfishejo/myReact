@@ -22,8 +22,11 @@
             return (
                 <img src={props.imgUrl} src={props.imgUrl} alt="" style={{
                     width: '300px',
-                    marginBottom: '20px',
-                    border: '1px soild black',
+                    margin: '20px',
+                    border: props.border,
+                    borderWidth:props.bw,
+                    borderColor:props.bc,
+                    borderStyle:props.bs,
                 }} />
             )
         }
@@ -39,8 +42,8 @@
                         {/* <GetImg></GetImg> */}
                         {/* 使用自訂屬性名稱，傳值給元件 */}
                         {/* 元件使用props接收 */}
-                        <GetImg imgUrl="./images/nasa-jlV2k_Fx0fc-unsplash.jpg" title="image1" />
-                        <GetImg imgUrl="./images/nasa-jlV2k_Fx0fc-unsplash.jpg" title="image1" />
+                        <GetImg imgUrl="./images/nasa-jlV2k_Fx0fc-unsplash.jpg" title="image1" width='300px' bs='soild' bx='red' bw='5px' />
+                        <GetImg imgUrl="./images/nasa-jlV2k_Fx0fc-unsplash.jpg" title="image1" border='99px soild black' />
 
                         {/* 沒有元件化的圖片：有N張圖就要重工N次 */}
                         {/* 
