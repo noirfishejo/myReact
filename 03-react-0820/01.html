@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        // 建立圖片元件
+        // 元件名稱字首大寫
+        function GetImg(){
+            // 元件結束後必須要有回傳值
+            return (
+                <img src="..." alt="" style={{
+                    width:'300px',
+                    border:'1px soild black',
+                }}/>
+            )
+        }
+
+        // step3. 建立React元件
+        function App() {
+            return (
+                <div>
+                    <h2>呼叫圖片元件</h2>
+                    {/* 呼叫元件：擇其一 */}
+                    {/* <GetImg></GetImg> */}
+                    {/* 使用自訂屬性名稱，傳值給元件 */}
+                    {/* 元件使用props接收 */}
+                    <GetImg imgUrl='...'>
+                </div>
+
+            )
+        }
+        ReactDOM
+            .createRoot(document.getElementById('root'))
+            .render(<App />);
+    </script>
+</body>
+
+</html>
