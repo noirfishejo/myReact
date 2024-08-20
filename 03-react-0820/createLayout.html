@@ -63,6 +63,7 @@
                       // 檢查price是否為數值型別 => typeof
                       // 是 => 顯示價格/月(含small標籤)
                       // 不是 => 顯示字串內容
+                      // 未解構
                       typeof props.price === 'number' ? <>${props.price}<small>/月</small></> : props.price
                     }
                     <br/>
