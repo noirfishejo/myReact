@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState } = React;
+
+        function App() {
+            const [num, setNum] = useState(1);
+            const [arr, setArr] = useState([1, 2, 3]);
+        
+
+        // 建立刪除陣列資料
+        function addArrData() {
+            setArr([...arr, arr.length + 1]);
+        }
+
+        // 建立刪除陣列資料
+        function removeArrData() {
+            setArr(arr.filter((item) => item !== arr.length));
+        }
+
+
+
+        return (
+            <div>
+                <button onClick={() => {
+                    setNum(num + 1);
+                }}>+1</button>{num}
+
+                <button onClick={() => {
+                    setNum(num - 1);
+                }}>-1</button>{num}
+                <hr />
+                {/* 讀取陣列資料給li */}
+                <ul>
+                    {
+                        // item => 陣列值
+                        // 陣列索引編號
+                        arr.map((item, index) => {
+                            return (
+                                <li key={index}>{item}</li>
+                            )
+                        })
+                    }
+                </ul>
+                <button onClick={addArrData}>新增陣列資料</button>
+                <button onClick={removeArrData}>移除陣列資料</button>
+            </div>
+        )
+        
+    }
+        ReactDOM
+            .createRoot(document.getElementById('root'))
+            .render(<App />);
+    </script>
+</body>
+
+</html>
