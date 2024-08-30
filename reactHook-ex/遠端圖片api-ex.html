@@ -36,15 +36,34 @@
                     const SearchBox = ({ onSearchHandler, filterString }) => {
                         return <div>
                             <label htmlFor="filter">搜尋</label>
-                            <input type="text" id="filter" className="form-control"
+                            <input type="text" id="filter" className="form-control mb-3"
                                 value={filterString}
                                 onChange={onSearchHandler}
                             />
                         </div>
                     }
+
+                    // #5a 建立卡片元件 
+                    const Card = ({item, h, w}) => {
+                        return (
+                            <div className="card">
+                                <img
+                                    src={item.urls.regular}
+                                    className="card-img-top img-cover"
+                                    alt="..."
+                                    height={h}
+                                    width={w}
+                                />
+                            </div>
+                        )
+                    }
+
                     const App = () => {
                         console.log(1);
                         const [filterString, setFilterString] = useState('cat');
+
+                        // #3a 建立列表用的陣列
+                        const [jsonData, setJsonData] = useState([]);
 
                         const onSearchHandler = (e) => {
                             setFilterString(e.target.value);
@@ -52,21 +71,48 @@
 
                         // #1 建立非同步方法時，會因為渲染的關係不斷重複觸發
 
-                        const getPhotos = async () => {
-                            // 手寫程式測試是否成功連接API
-                            // console.log(`${api}?client_id=${accessKey}&query=food`);
+                        // const getPhotos = async () => {
+                        //     // 手寫程式測試是否成功連接API
+                        //     // console.log(`${api}?client_id=${accessKey}&query=food`);
 
-                            const result = await axios.get(`${api}?client_id=${accessKey}&query=${filterString}`);
-                            console.log(result);
-                        }
-                        getPhotos();
-                        
+                        //     const result = await axios.get(`${api}?client_id=${accessKey}&query=${filterString}`);
+                        //     console.log(result);
+                        // }
+                        // getPhotos();
+
                         // #2 useEffect
+                        useEffect(() => {
+                            const getPhotos = async () => {
+                                // 手寫程式測試是否成功連接API
+                                // console.log(`${api}?client_id=${accessKey}&query=food`);
+
+                                const result = await axios.get(`${api}?client_id=${accessKey}&query=${filterString}`);
+                                console.log(result);
+
+                                // #3b 更新列表 => 將請求結果更新到列表
+                                setJsonData(result.data.results);
+                            };
+                            getPhotos();
+                        }, []);
 
                         return (<div>
                             {console.log(2)}
                             <SearchBox onSearchHandler={onSearchHandler} filterString={filterString} />
-                        </div>)
+
+                            <div className="row row-cols-2 g-3">
+                                {
+                                    jsonData.map((item) => {
+                                        return (
+                                            <div className="col" key={item.id}>
+                                                {/* #5b 呼叫卡片元件 */}
+                                                <Card item={item} h="400" w="100%" />
+                                            </div>
+                                        )
+                                    })
+                                }
+                            </div>
+                        </div>
+                        )
                     }
 
                     ReactDOM
@@ -76,6 +122,11 @@
             </main>
         </div>
     </div>
+    <style>
+        .img-cover {
+            object-fit: cover;
+        }
+    </style>
     <link rel="stylesheet" href="./stylesheets/all.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 </body>
