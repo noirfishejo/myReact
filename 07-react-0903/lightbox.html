@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 燈箱效果 css -->
+    <link href="./jQuery/jQuery/lightbox/css/lightbox.css" rel="stylesheet" />
+
+    <style>
+        img {
+            width: 200px;
+        }
+    </style>
+
+    <!-- 載入React, Babel -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+<!-- <a href="../space/nasa-pd4lo70LdbI-unsplash.jpg"></a> -->
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        function App() {
+            return (
+                <div>
+                    <h1>燈箱效果</h1>
+                    <a href="../space/nasa-jlV2k_Fx0fc-unsplash.jpg" data-lightbox="group" data-title="Photo1">
+                        <img src="../space/nasa-jlV2k_Fx0fc-unsplash.jpg" alt="" />
+                    </a>
+                    <a href="../space/nasa-lEBDlbXLEgs-unsplash.jpg" data-lightbox="group" data-title="Photo1">
+                        <img src="../space/nasa-lEBDlbXLEgs-unsplash.jpg" alt="" />
+                    </a>
+                    <a href="../space/nasa-pd4lo70LdbI-unsplash.jpg" data-lightbox="group" data-title="Photo1">
+                        <img src="../space/nasa-pd4lo70LdbI-unsplash.jpg" alt="" />
+                    </a>
+                </div>
+            )
+        }
+        ReactDOM
+            .createRoot(document.getElementById('root'))
+            .render(<App />);
+    </script>
+
+    <!--  -->
+    <script src="./jQuery/jQuery/js/jquery-1.11.3.min.js"></script>
+
+    <!-- 燈箱效果 js -->
+    <script src="./jQuery/jQuery/lightbox/js/lightbox.js"></script>
+</body>
+
+</html>
