@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #wrapper {
+            width: 960px;
+            margin: 50px auto;
+        }
+
+        p {
+            text-align: justify;
+            line-height: 1.5;
+        }
+
+        a {
+            color: rgb(135, 166, 233);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .ttpShow {
+            display: none;
+        }
+
+        #ttpPanel {
+            border: 1px solid #bbb;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: left;
+            background-color: white;
+            position: absolute;
+            z-index: 99;
+        }
+    </style>
+
+
+    <!-- 載入React, Babel -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useEffect } = React;
+        function App() {
+            useEffect(() => {
+
+                $(function () {
+                    // 滑鼠事件
+                    // 移入 => mouseover()
+                    // 移動 => mousemove()
+                    // 移出 => mouseout()
+
+                    // 座標 X => pageX
+                    // 座標 Y => pageY
+
+                    // 淡入 => faedIn()
+                    // 淡出 => faedOut()
+                    // 速度 => 秒數 or 參數(slow, normal, fast)
+                    // 傳回被找到的資訊 => has()
+
+                    $('a:has(.ttpShow)').mouseover(function (e) {
+                        // 滑鼠碰到超連結包含ttpShow的時候
+                        $('body').append('<div id="ttpPanel">' + $(this).children('.ttpShow').html() + '</div>');
+                        $('#ttpPanel').css({
+                            top: (e.pageY + 10) + 'px',
+                            left: (e.pageX + 10) + 'px'
+                        }).fadeIn('fast');
+                    }).mousemove(function (e) {
+                        // 滑鼠碰到超連結包含ttpShow的時候
+                        $('#ttpPanel').css({
+                            top: (e.pageY + 10) + 'px',
+                            left: (e.pageX + 10) + 'px'
+                        }).fadeIn('fast');
+                    }).mouseout(function (e) {
+                        // 滑鼠離開超連結包含ttpShow的時候
+                        $('#ttpPanel').remove();
+                    });
+
+                });
+            }, []);
+            return (
+                <div id="wrapper">
+                    <h1>toolTip 效果 - 使用滑鼠方法</h1>
+                    <p>Lorem ipsum dolor sit amet, <a href="#">consectetur<span className="ttpShow">consectetur 內容說明</span></a> adipisicing elit. Vel modi voluptatem, illo doloremque molestiae eveniet, soluta placeat reprehenderit obcaecati cupiditate molestias facere repudiandae nam voluptates provident dolor, expedita delectus laboriosam quidem corporis possimus at dolores. Iusto nam delectus libero excepturi facere aut, numquam veniam assumenda facilis maiores blanditiis cum eius. Modi perspiciatis rem delectus quisquam laboriosam! Fugit excepturi illo laboriosam minus? Explicabo vel incidunt animi molestiae vero consequatur et! Quasi, quae cum. Dignissimos repudiandae tempora, consectetur quae at illo ipsum nemo autem nisi quibusdam iure voluptatibus modi inventore velit fugiat reprehenderit a. Odio, maiores ab sed amet similique unde ipsam esse soluta? Quia, impedit harum ratione soluta vitae, ea, nesciunt facere officiis ipsa non enim. Neque animi modi vel mollitia tempora aliquam iure provident tenetur, officia vero unde, eum explicabo sint numquam. Non culpa voluptatem debitis magnam quis placeat nostrum vitae consequuntur provident numquam nesciunt est quam iure, asperiores quidem quos quo expedita, veniam optio. Quisquam ut quod beatae tenetur quaerat corrupti enim aliquid doloremque. Vero itaque veritatis voluptate repellendus esse, minima eaque a, voluptates architecto sit ullam rem libero ipsum dignissimos voluptatibus nemo distinctio unde culpa minus praesentium ipsa tempora vitae? Quis dignissimos aspernatur libero sed similique incidunt eius!</p>
+                </div>
+            )
+        }
+        ReactDOM
+            .createRoot(document.getElementById('root'))
+            .render(<App />);
+    </script>
+
+    <!-- jQuery js -->
+    <script src="./jQuery/js/jquery-1.11.3.min.js"></script>
+
+</body>
+
+</html>
