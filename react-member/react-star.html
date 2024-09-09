@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Rating</title>
+    <link rel="stylesheet" href="./css/star.css">
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        // 單列星級評分元件
+        const StarRating = ({ label }) => {
+            const [rating, setRating] = React.useState(0);
+
+            const handleRatingChange = (value) => {
+                setRating(value);
+            };
+
+            return (
+                <div className="star-rating">
+                    <div className="stars">
+                        {/* 0 分的評分標籤 */}
+                        <label className="number">
+                            <input
+                                type="radio"
+                                name={`rating-${label}`}
+                                value={0}
+                                checked={rating === 0}
+                                onChange={() => handleRatingChange(0)}
+                            />
+                        </label>
+
+                        {/* 1 到 5 分的評分標籤 */}
+                        {[...Array(5)].map((_, index) => (
+                            <label className="star" key={index}>
+                                <input
+                                    type="radio"
+                                    name={`rating-${label}`}
+                                    value={index + 1}
+                                    checked={rating === index + 1}
+                                    onChange={() => handleRatingChange(index + 1)}
+                                />
+                            </label>
+                        ))}
+
+                        {/* 動態顯示選中的評分數字 */}
+                        <div className="number-rating">{rating}</div>
+                    </div>
+                </div>
+            );
+        };
+
+        // 父元件，包含五列星級評分
+        const MultipleStarRatings = () => {
+            const ratings = ['評分 1', '評分 2', '評分 3', '評分 4', '評分 5'];
+
+            return (
+                <div className="multiple-star-ratings">
+                    {ratings.map((label, index) => (
+                        <StarRating key={index} label={label} />
+                    ))}
+                </div>
+            );
+        };
+
+        // 渲染父元件
+        ReactDOM.createRoot(document.getElementById('root')).render(<MultipleStarRatings />);
+    </script>
+</body>
+
+</html>
