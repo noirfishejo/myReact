@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #wrapper {
+            width: 800px;
+            margin: 0 auto;
+            text-align: justify;
+            padding: 50px 0;
+        }
+
+        .btnArea a {
+            color: red;
+            text-decoration: none;
+        }
+
+        p {
+            line-height: 1.5rem;
+        }
+
+        /* 隱藏彈出視窗內容 */
+        #modalContent {
+            display: none;
+        }
+    </style>
+
+
+    <!-- 載入React, Babel -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+
+<body>
+
+
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useEffect } = React;
+        function App() {
+            useEffect(() => {
+
+                // 撰寫jQuery
+                $(function () {
+
+                    // 取得彈跳視窗按鈕
+                    let modalBtn = $('.modalBtn');
+                    // 遮罩背景透明度
+                    let overlayOpacity = 0.7;
+
+                    // jQuery 監聽事件寫法
+                    modalBtn.on('click', function(e){
+                        // 取消預設動作
+                        e.preventDefault();
+                        // 取得超連結
+                        let setMdw = $(this);
+                        // 取得超連結的 href 屬性
+                        let setHref = setMdw.attr('href');
+                        // 取得 href 對應 id 的內容
+                        let setSource = $(setHref).html();
+                        // 取得視窗高度
+                        let curHeight = $(window).height();
+
+                    /*
+                    // 動態生成下方元素
+                    // 遮罩元素
+                    <div id="mdOverlay"></div>
+                    // 彈跳視窗
+                    <div id="mdWindow">
+                        // 關閉鈕 
+                        <div className="mdClose">X</div>
+                        // 被隱藏的內容
+                        <div id="contentWrap">被隱藏的內容</div>
+                    </div> 
+                    */
+                    $('body').append('<div id="mdOverlay"></div><div id="mdWindow"><div className="mdClose">X</div><div id="contentWrap">被隱藏的內容</div></div> ')
+                    $('#mdOverlay','#mdWindow').css({display:'block', opacity:'0'});
+                    $('#mdOverlay').css({height:'curHeight'})
+                    });
+                });
+            }, []);
+
+            return (
+                <div id="wrapper">
+                    <div className="btnArea">
+                        <a href="#modalContent" className="modalBtn">彈跳視窗</a>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda voluptas porro ipsam nulla ratione neque ad nostrum, culpa rerum quos vero explicabo, corrupti esse aliquid dolore, magni officia minima possimus quasi? Reprehenderit, numquam aliquid. Minus repellat provident, eaque facere quidem libero? Deserunt maxime ad autem tempora ipsam sequi est et culpa iusto enim. Facere magnam expedita eligendi eius voluptas voluptate totam harum autem, ullam quas, et maiores ducimus, odit aperiam. Officia eaque asperiores modi adipisci! Rerum eos itaque, ab, vero nulla dolorum fugit eius neque odit ea excepturi, sapiente quibusdam quia accusantium quisquam. Mollitia repellendus molestias nihil nam sit, eaque maiores voluptas commodi voluptates eligendi excepturi necessitatibus dolor maxime. Hic harum est quam magni repudiandae tenetur doloribus similique et illo non sunt cupiditate fugiat voluptates deleniti eos ab, laborum at mollitia tempore officiis impedit consectetur tempora fugit quos. Illum praesentium laudantium rerum cupiditate voluptas iure impedit. Nisi est distinctio, accusamus laboriosam molestiae facilis, molestias tenetur voluptas repellat amet, neque ipsa fugit porro. Iste ducimus, dolorem veritatis aliquid earum, placeat ipsa vel voluptates vitae voluptatum quam rem magni quis, iure dicta asperiores? Earum omnis quam ab quis, dignissimos officiis. Ratione vitae maxime nulla incidunt, quod totam qui eius illum sit natus aut ab quisquam quidem voluptatum veniam esse aspernatur ullam temporibus cum ut! Reprehenderit enim laudantium accusantium fugiat ratione tempora! Molestiae facere repellendus maxime odit magnam, iusto sunt ducimus illo atque, sit qui architecto et vero omnis quia blanditiis rem animi velit beatae impedit? Facilis officiis nulla perspiciatis ipsa. Amet voluptatibus nesciunt quas doloribus iusto accusamus earum, ullam quae expedita! Aliquam, cupiditate esse aspernatur minus commodi corrupti doloribus quidem voluptates eum modi corporis nihil voluptatem animi nobis. Numquam, corrupti, voluptatem tempore laborum sed commodi a mollitia, velit nisi ut nihil non eveniet voluptas inventore exercitationem facere vitae voluptates asperiores. Velit inventore minima, eligendi, nobis sit sequi animi vitae tempore sed doloremque temporibus eum amet! Reiciendis, est. Sed voluptas accusantium tenetur inventore odio cumque cupiditate, illum libero, quos maiores unde ullam quidem? Esse nihil excepturi cum, dolore eaque obcaecati dolor similique nesciunt. Sunt qui molestias est nemo? Nihil assumenda commodi quaerat cupiditate blanditiis aperiam ut numquam debitis, doloribus obcaecati excepturi ad similique accusantium amet error perferendis ducimus perspiciatis non libero. Consectetur, recusandae quis enim cupiditate alias libero harum aperiam dolor quam similique exercitationem veritatis illo placeat laudantium consequuntur, quas deserunt, fugit perferendis qui voluptas! Officiis laudantium earum adipisci. Quia itaque est aut. Quibusdam quae molestiae sed, suscipit culpa corporis fuga perspiciatis unde nihil vitae distinctio voluptas quidem beatae omnis! Deleniti consequuntur voluptas assumenda. Quaerat blanditiis cumque, quis itaque illo provident veniam aliquid nesciunt fuga consequatur deleniti recusandae odio. Nihil omnis, expedita laboriosam dolor quisquam architecto aperiam et delectus accusamus unde itaque animi vel quo voluptatem quae libero, eveniet dignissimos sint perspiciatis dolore, earum obcaecati veniam necessitatibus? Eveniet, culpa suscipit reprehenderit rerum, laboriosam atque quo accusamus ea voluptatem ratione voluptates alias. Ratione, consequatur? Repellat officia perferendis, dolor mollitia dolorum rerum quaerat, hic laudantium ullam ipsa inventore fugit voluptates deleniti iure aspernatur. Tempora, sunt quisquam eligendi possimus, pariatur error natus quae temporibus ullam voluptatibus impedit vero? Deleniti voluptate rerum id unde quas perferendis porro fugit repudiandae. Voluptatibus delectus pariatur mollitia nisi veniam laboriosam, recusandae fugit id impedit doloribus reprehenderit officia magni quas expedita blanditiis consequuntur corporis voluptates molestias deleniti. Quam error repellat enim totam iure ullam dicta eum veritatis corrupti, odit deserunt ex nihil maiores. Voluptate illum cum ipsum maxime, numquam porro enim alias dignissimos iste, molestias, minima dolore asperiores non maiores veritatis quibusdam! Illum obcaecati veniam pariatur deleniti nulla earum porro rerum ad magnam numquam aliquid in expedita tempora ut, quisquam deserunt aspernatur fuga animi amet voluptatem impedit dolorum. Maxime saepe ad soluta sit cumque quas aut nihil, corrupti molestiae, culpa reiciendis blanditiis voluptatum repellendus dolor nostrum eius voluptas dicta. Iusto natus in qui rem voluptates esse autem odit voluptatum repellendus totam ipsa soluta eos nesciunt labore laboriosam dolor perspiciatis quaerat dolorum modi facere, quae atque magni repudiandae? Dolorem possimus placeat ipsum molestiae facilis tenetur tempora, quibusdam doloribus ipsa! Facere vero rerum corporis error sed, nihil ipsam laudantium voluptatem omnis temporibus dolor molestiae iste quis. Accusantium cupiditate beatae nostrum cumque autem eaque placeat! Facilis aliquid omnis ea ex iusto iste praesentium exercitationem fugiat, delectus modi, corrupti quam illo veritatis voluptas expedita aut ipsam reiciendis nam voluptatibus fugit. Hic autem aspernatur dignissimos, animi dolore quam quisquam officiis, tempore totam doloremque iure consequatur, ipsum quia repudiandae explicabo eaque laboriosam fugiat atque maxime. Soluta, nemo? Officiis odit incidunt quam, amet illo praesentium perspiciatis ut ea provident voluptate reprehenderit, nemo laborum debitis rem! Dignissimos, ea consequatur! Molestias fuga dolore in accusamus, sequi dolorum aperiam ab. Quidem ex et saepe temporibus minima quam provident tempore nulla optio amet assumenda error corrupti repudiandae, eaque, fugit consectetur veniam ad. Dolorum, aperiam est commodi quidem ipsa vitae delectus aut illum voluptate, fuga laudantium iusto ratione? Repellendus voluptates, excepturi optio amet quia quidem officiis ex rerum nemo sed incidunt odit eius dolorem alias pariatur nulla soluta voluptatem est harum ad atque maiores! Mollitia labore eveniet eos architecto sequi! Quia, omnis magnam vel culpa temporibus non possimus dolore quod aliquid ipsam consequuntur libero quo dolorum quaerat, quis delectus? Nam, doloremque sapiente. Quos praesentium earum nam iure autem dicta voluptatibus error quam officia distinctio, maiores, non vitae fuga nesciunt voluptatum perspiciatis ratione! Cupiditate velit ratione nulla cumque fuga fugiat autem, dignissimos porro, illum, recusandae reprehenderit. Minima, tenetur dolorum impedit molestias ducimus neque eos porro ut vel modi iusto tempora unde atque eligendi ipsum rem nesciunt placeat ad possimus facere. Sint, libero tempora. Quos et provident blanditiis aspernatur ipsum debitis neque, nobis sunt beatae eos quisquam sint accusantium necessitatibus architecto dolorem animi deleniti, numquam voluptates sequi. Consequuntur consectetur laboriosam dolorum labore nisi id officia deserunt veritatis accusantium, iusto sequi possimus nemo mollitia? Dolores, ex quod dolore debitis pariatur eveniet culpa dolor adipisci delectus beatae odit autem numquam a reiciendis velit sit quam, illum nostrum quas labore quis rerum! Perferendis voluptatum quisquam animi, illum cumque eligendi odit assumenda, nobis alias dolorem molestias ipsum, quos facilis iusto?</p>
+
+                    {/* 彈出視窗內容 */}
+                    <div id="modalContent">
+                        <h2>彈出視窗標題</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos blanditiis beatae sint, nemo sequi a reprehenderit? Quod molestiae, animi distinctio magni deserunt ab iure voluptates ipsum doloremque necessitatibus cupiditate fugit.</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos blanditiis beatae sint, nemo sequi a reprehenderit? Quod molestiae, animi distinctio magni deserunt ab iure voluptates ipsum doloremque necessitatibus cupiditate fugit.</p>
+                    </div>
+                </div>
+
+            )
+        }
+        ReactDOM
+            .createRoot(document.getElementById('root'))
+            .render(<App />);
+    </script>
+
+    <!-- jQuery js -->
+    <script src="./jQuery/js/jquery-1.11.3.min.js"></script>
+
+</body>
+
+</html>
