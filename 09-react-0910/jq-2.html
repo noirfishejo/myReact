@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+.main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+        a {
+            text-decoration: none;
+            color: #585858;
+        }
+
+        .box {
+            display: block;
+            font-weight: 700;
+            background-color: #f2f2f2;
+            box-shadow: inset 0 0 4px #c1c5c9af;
+            width: 150px;
+            height: 40px;
+            text-align: center;
+            line-height: 42px;
+            border-radius: 12px;
+            transition: ease-in-out .35s;
+        }
+
+        .bgColor {
+            background-color: #282828;
+            color: #ededed;
+        }
+
+
+        .container {
+            margin-top: 40px;
+            overflow: hidden;
+            width: 200px;
+            height: 200px;
+            border-radius: 12px;
+        }
+
+        img {
+            width: 100%;
+            vertical-align: bottom;
+            transition: all linear 3s;
+        }
+
+        .bigImg {
+            /* scale: 350%; */
+            transform: scale(5);
+        }
+
+    </style>
+
+
+    <!-- 載入React, Babel -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useEffect } = React;
+        function App() {
+            useEffect(() => {
+
+                $(function () {
+                    // $('#cssAnim').click(function () {
+                    //     // 新增類別方法 : addClass()
+                    //     $(this).addClass('bgColor');
+                    // });
+                    $('#cssAnim').hover(function () {
+                        // 新增類別方法 : addClass()
+                        $(this).addClass('bgColor');
+                    }, function () {
+                        // 刪除類別方法 : removeClass()
+                        $(this).removeClass('bgColor');
+                    });
+
+                    $('#img1').hover(function () {
+                        // 新增類別方法 : addClass()
+                        $(this).addClass('bigImg');
+                    }, function () {
+                        // 刪除類別方法 : removeClass()
+                        $(this).removeClass('bigImg');
+                    });
+                });
+            }, []);
+            return (
+                <div className="main">
+                    <h1>動態新增刪除類別</h1>
+                    <a href="#" className="box" id="cssAnim">背景變色</a>
+                    <a className="container">
+                        <img id="img1" src="../space/nasa-lEBDlbXLEgs-unsplash.jpg" alt="" />
+                    </a>
+                </div>
+            )
+        }
+        ReactDOM
+            .createRoot(document.getElementById('root'))
+            .render(<App />);
+    </script>
+
+    <!-- jQuery js -->
+    <script src="./jQuery/js/jquery-1.11.3.min.js"></script>
+
+</body>
+
+</html>
